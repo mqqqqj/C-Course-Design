@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/image">
         <file>c1.png</file>
+        <file>cheater.png</file>
+        <file>copycat.png</file>
+        <file>detective.png</file>
+        <file>grudger.png</file>
+        <file>me.png</file>
+        <file>pink.png</file>
+        <file>small.png</file>
     </qresource>
 </RCC>

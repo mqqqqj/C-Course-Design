@@ -6,13 +6,15 @@ repeatedgame::repeatedgame(QWidget *parent) :
     ui(new Ui::repeatedgame)
 {
     ui->setupUi(this);
+    ui->summary->hide();
+
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    round = qrand()%5+5;//初始化和第一个对手的对战轮数
-    qDebug() << "total round !"<<round;
-    optlist.append(&obj1);
-    optlist.append(&obj2);
-    optlist.append(&obj3);
-    optlist.append(&obj4);
+    round = qrand()%5+10;//初始化和第一个对手的对战轮数
+    //qDebug() << "total round !"<<round;
+    //optlist.append(&obj1);
+    //optlist.append(&obj2);
+    //optlist.append(&obj3);
+    //optlist.append(&obj4);
     optlist.append(&obj5);
     curropt = optlist.first();//当前的对手对象
     curropt->getname();
@@ -23,8 +25,23 @@ repeatedgame::~repeatedgame()
     delete ui;
 }
 
+QString repeatedgame::displayopt(int x){
+    switch(x){
+    case 1:
+        return ":/image/cheater.png";
+    case 2:
+        return ":/image/pink.png";
+    case 3:
+        return ":/image/grudger.png";
+    case 4:
+        return ":/image/detective.png";
+    }
+}
+
 void repeatedgame::getresult(player* opt){//计算得分结果
+    opt->getname();
     bool optchoice = opt->getact();
+    //qDebug()<<"cheater你到底投币了没:"<<optchoice;
     if(my_act){
         if(optchoice){
             mycurrscore+=2;
@@ -52,17 +69,21 @@ void repeatedgame::getresult(player* opt){//计算得分结果
 
 void repeatedgame::on_coop_clicked()//我选择合作
 {
-    qDebug() << "curr round !"<<currround;
+    QFont font;
+    font.setPointSize(15);//字体大小
+    ui->mycurr->setFont(font);
+    ui->optcurr->setFont(font);
+    //qDebug() << "curr round !"<<currround;
     my_act = 1;
+    qDebug() << "我选择合作!";
     if(currround<round){//如果还没到最大轮数
         if(currround>=1){//如果不是第一轮
             curropt->act(my_last_act);//让对手根据我上一次行动来获取当前的选择，这里有问题,对象要写到头文件里
-            qDebug() << "opt get act finished!";
+            //qDebug() << "opt get act finished!";
         }
         getresult(curropt);
-        qDebug() << "one fight has finished !";
+        //qDebug() << "one fight has finished !";
         my_last_act = my_act;
-
     }
     currround++;
     ui->mycurr->setText(QString::number(mycurrscore));
@@ -70,31 +91,49 @@ void repeatedgame::on_coop_clicked()//我选择合作
     ui->mytotalscore->setText(QString::number(mytotal));
     if(currround==round){
         qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-        round = qrand()%5+5;
-        qDebug() << "change total round !"<<round;
+        round = qrand()%5+3;
+        //qDebug() << "change total round !"<<round;
         currround = 0;
         num_fighted++;
         optlist.removeAt(0);
-        curropt = optlist.first();
-        ui->optid->setText("对手"+QString::number(num_fighted+1)+"/5");
-        ui->mycurr->setText(QString::number(0));
-        ui->optcurr->setText(QString::number(0));
-        mycurrscore = 0;
-        qDebug() << "change opt !";
-        curropt->getname();
+        if(optlist.isEmpty()==false){
+            //qDebug() << "change opt !";
+            curropt = optlist.first();
+            curropt->getname();
+            ui->optid->setText("对手"+QString::number(num_fighted+1)+"/5");
+            ui->mycurr->setText(QString::number(0));
+            ui->optcurr->setText(QString::number(0));
+            ui->optpicture->setPixmap(QPixmap(displayopt(num_fighted)));
+            mycurrscore = 0;
+        }
+        else{
+            //qDebug()<<"end";
+            ui->cheat->hide();
+            ui->coop->hide();
+            ui->summary->show();
+        }
     }
 }
 
+
+
 void repeatedgame::on_cheat_clicked()
 {
+    QFont font;
+    font.setPointSize(15);//字体大小
+    ui->mycurr->setFont(font);
+    ui->optcurr->setFont(font);
     my_act = 0;
-    qDebug() << "curr round !"<<currround;
+    qDebug() << "我选择欺骗!";
+
+    //qDebug() << "curr round !"<<currround;
     if(currround<round){//如果还没到最大轮数
         if(currround>=1){//如果不是第一轮
             curropt->act(my_last_act);//让对手根据我上一次行动来获取当前的选择，这里有问题
         }
         getresult(curropt);
-        qDebug() << "one fight has finished !";
+        curropt->evercheated = true;
+        //qDebug() << "one fight has finished !";
         my_last_act = my_act;
 
     }
@@ -104,17 +143,36 @@ void repeatedgame::on_cheat_clicked()
     ui->mytotalscore->setText(QString::number(mytotal));
     if(currround==round){
         qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-        round = qrand()%5+5;
-        qDebug() << "change total round !"<<round;
+        round = qrand()%5+3;
+        //qDebug() << "change total round !"<<round;
         currround = 0;
         num_fighted++;
         optlist.removeAt(0);
-        curropt = optlist.first();
-        ui->optid->setText("对手"+QString::number(num_fighted+1)+"/5");
-        ui->mycurr->setText(QString::number(0));
-        ui->optcurr->setText(QString::number(0));
-        mycurrscore = 0;
-        qDebug() << "change opt !";
-        curropt->getname();
+        if(optlist.isEmpty()==false){
+            //qDebug() << "change opt !";
+            curropt = optlist.first();
+            curropt->getname();
+            ui->optid->setText("对手"+QString::number(num_fighted+1)+"/5");
+            ui->mycurr->setText(QString::number(0));
+            ui->optcurr->setText(QString::number(0));
+            mycurrscore = 0;
+            ui->optpicture->setPixmap(QPixmap(displayopt(num_fighted)));
+        }
+        else{
+            //qDebug()<<"end";
+            ui->cheat->hide();
+            ui->coop->hide();
+            ui->summary->show();
+        }
     }
+}
+
+void repeatedgame::on_summary_clicked()
+{
+   QFont font;
+   font.setPointSize(20);//字体大小
+   p->ui->myscore->setFont(font);
+   p->ui->myscore->setText("你最终的得分是："+QString::number(mytotal)+",理论的分数区间是[7,49]。");
+   sc->show();
+   this->hide();
 }

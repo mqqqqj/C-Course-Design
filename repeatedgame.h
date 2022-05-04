@@ -7,6 +7,11 @@
 #include <QTime>
 #include <QList>
 #include<qdebug.h>
+#include<showscore.h>
+#include "ui_showscore.h"
+
+extern showscore *p;
+
 namespace Ui {
 class repeatedgame;
 }
@@ -20,7 +25,8 @@ public:
     ~repeatedgame();
     void startgame(player*opt);
     void getresult(player* opt);
-    bool my_act = 0;
+    QString displayopt(int x);
+    bool my_act = 1;
     bool my_last_act = my_act;
     int mytotal = 0;
     int mycurrscore = 0;
@@ -40,8 +46,11 @@ private slots:
 
     void on_cheat_clicked();
 
+    void on_summary_clicked();
+
 private:
     Ui::repeatedgame *ui;
+    showscore* sc = new showscore;
 };
 
 #endif // REPEATEDGAME_H

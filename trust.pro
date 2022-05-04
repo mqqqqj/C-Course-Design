@@ -16,22 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    battle.cpp \
     main.cpp \
     intro.cpp \
     onegame.cpp \
     player.cpp \
-    repeatedgame.cpp
+    repeatedgame.cpp \
+    showscore.cpp \
+    tournament.cpp
 
 HEADERS += \
+    battle.h \
     intro.h \
     onegame.h \
     player.h \
-    repeatedgame.h
+    repeatedgame.h \
+    showscore.h \
+    tournament.h
 
 FORMS += \
     intro.ui \
     onegame.ui \
-    repeatedgame.ui
+    repeatedgame.ui \
+    showscore.ui \
+    tournament.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
