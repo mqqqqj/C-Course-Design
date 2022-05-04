@@ -7,6 +7,7 @@
 #include<QKeyEvent>
 #include<vector>
 #include<QString>
+#include <repeatedgame.h>
 namespace Ui {
 class onegame;
 }
@@ -29,8 +30,12 @@ private slots:
 
     void on_notice_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::onegame *ui;
+    repeatedgame* repg = new repeatedgame;
+
 };
 
 #endif // ONEGAME_H

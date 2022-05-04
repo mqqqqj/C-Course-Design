@@ -53,6 +53,7 @@ void onegame::on_retry_clicked()
     QPalette pe;
     pe.setColor(QPalette::WindowText,Qt::red);
     ui->label_2->setPalette(pe);
+    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     int x=qrand()%100;
     if(x%2==0){
         isopcheat = false;
@@ -66,4 +67,10 @@ void onegame::on_retry_clicked()
 void onegame::on_notice_clicked()
 {
     ui->noticetext->show();
+}
+
+void onegame::on_pushButton_3_clicked()
+{
+    repg->show();
+    this->hide();
 }
