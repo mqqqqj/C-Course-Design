@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "onegame.h"
+#include<QPainter>
 QT_BEGIN_NAMESPACE
 namespace Ui { class intro; }
 QT_END_NAMESPACE
@@ -13,6 +14,7 @@ class intro : public QMainWindow
 
 public:
     intro(QWidget *parent = nullptr);
+    void paintEvent(QPaintEvent *event);
     ~intro();
 
 private slots:

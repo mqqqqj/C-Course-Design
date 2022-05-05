@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1009</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="myscore">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
+      <x>90</x>
+      <y>40</y>
       <width>791</width>
       <height>121</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>110</y>
+      <x>90</x>
+      <y>120</y>
       <width>801</width>
       <height>311</height>
      </rect>
@@ -47,7 +47,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QTextBrowser" name="textBrowser_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>170</x>
       <y>430</y>
       <width>631</width>
       <height>121</height>
@@ -68,10 +68,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>480</y>
-      <width>93</width>
-      <height>28</height>
+      <x>430</x>
+      <y>560</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -84,7 +84,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1009</width>
      <height>26</height>
     </rect>
    </property>

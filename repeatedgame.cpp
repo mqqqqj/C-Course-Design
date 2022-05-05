@@ -9,12 +9,12 @@ repeatedgame::repeatedgame(QWidget *parent) :
     ui->summary->hide();
 
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
-    round = qrand()%5+10;//初始化和第一个对手的对战轮数
+    round = qrand()%5+3;//初始化和第一个对手的对战轮数
     //qDebug() << "total round !"<<round;
-    //optlist.append(&obj1);
-    //optlist.append(&obj2);
-    //optlist.append(&obj3);
-    //optlist.append(&obj4);
+    optlist.append(&obj1);
+    optlist.append(&obj2);
+    optlist.append(&obj3);
+    optlist.append(&obj4);
     optlist.append(&obj5);
     curropt = optlist.first();//当前的对手对象
     curropt->getname();
@@ -23,6 +23,14 @@ repeatedgame::repeatedgame(QWidget *parent) :
 repeatedgame::~repeatedgame()
 {
     delete ui;
+}
+
+
+void repeatedgame::paintEvent(QPaintEvent*event){
+    QPixmap pixmap = QPixmap(":/image/background.png").scaled(this->size());
+    QPalette palette;
+    palette.setBrush(backgroundRole(), QBrush(pixmap));
+    setPalette(palette);
 }
 
 QString repeatedgame::displayopt(int x){
@@ -84,6 +92,7 @@ void repeatedgame::on_coop_clicked()//我选择合作
         getresult(curropt);
         //qDebug() << "one fight has finished !";
         my_last_act = my_act;
+        ui->optchoice->setText("对手是否选择合作："+QString::number(curropt->getact()));
     }
     currround++;
     ui->mycurr->setText(QString::number(mycurrscore));
@@ -135,7 +144,7 @@ void repeatedgame::on_cheat_clicked()
         curropt->evercheated = true;
         //qDebug() << "one fight has finished !";
         my_last_act = my_act;
-
+        ui->optchoice->setText("对手是否选择合作："+QString::number(curropt->getact()));
     }
     currround++;
     ui->mycurr->setText(QString::number(mycurrscore));

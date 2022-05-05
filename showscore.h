@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include<tournament.h>
+#include<QPainter>
 namespace Ui {
 class showscore;
 }
@@ -14,6 +15,7 @@ class showscore : public QMainWindow
 public:
     explicit showscore(QWidget *parent = nullptr);
     ~showscore();
+    void paintEvent(QPaintEvent*event);
     int score = 0;
     Ui::showscore *ui;
 private slots:

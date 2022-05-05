@@ -82,8 +82,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="coop">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>450</y>
+      <x>410</x>
+      <y>440</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -95,8 +95,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="cheat">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>450</y>
+      <x>230</x>
+      <y>440</y>
       <width>131</width>
       <height>51</height>
      </rect>
@@ -128,7 +128,7 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="summary">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>340</x>
       <y>460</y>
       <width>93</width>
       <height>28</height>
@@ -162,6 +162,32 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/image/me.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="optchoice">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>360</y>
+      <width>241</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>对手选择：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>280</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;vs&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

@@ -16,6 +16,13 @@ showscore::~showscore()
     delete ui;
 }
 
+void showscore::paintEvent(QPaintEvent*event){
+    QPixmap pixmap = QPixmap(":/image/background.png").scaled(this->size());
+    QPalette palette;
+    palette.setBrush(backgroundRole(), QBrush(pixmap));
+    setPalette(palette);
+}
+
 void showscore::on_pushButton_clicked()
 {
     trn->show();

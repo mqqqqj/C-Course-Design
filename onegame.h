@@ -20,6 +20,7 @@ public:
     explicit onegame(QWidget *parent = nullptr);
     ~onegame();
     bool isopcheat = true;
+    void paintEvent(QPaintEvent *event);
 
 private slots:
     void on_pushButton_2_clicked();

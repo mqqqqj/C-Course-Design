@@ -8,5 +8,7 @@
         <file>me.png</file>
         <file>pink.png</file>
         <file>small.png</file>
+        <file>background.png</file>
+        <file>white.png</file>
     </qresource>
 </RCC>

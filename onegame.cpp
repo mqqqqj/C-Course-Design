@@ -14,6 +14,13 @@ onegame::~onegame()
     delete ui;
 }
 
+void onegame::paintEvent(QPaintEvent *event){
+    QPixmap pixmap = QPixmap(":/image/background.png").scaled(this->size());
+    QPalette palette;
+    palette.setBrush(backgroundRole(), QBrush(pixmap));
+    setPalette(palette);
+}
+
 void onegame::on_pushButton_2_clicked(){
     QFont font;
     font.setPointSize(12);//字体大小

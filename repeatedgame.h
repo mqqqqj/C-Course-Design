@@ -9,7 +9,7 @@
 #include<qdebug.h>
 #include<showscore.h>
 #include "ui_showscore.h"
-
+#include<QPainter>
 extern showscore *p;
 
 namespace Ui {
@@ -23,6 +23,7 @@ class repeatedgame : public QMainWindow
 public:
     explicit repeatedgame(QWidget *parent = nullptr);
     ~repeatedgame();
+    void paintEvent(QPaintEvent*event);
     void startgame(player*opt);
     void getresult(player* opt);
     QString displayopt(int x);
@@ -38,6 +39,9 @@ public:
     pink obj3;
     grudger obj4;
     detective obj5;
+    //duck obj6;
+    //simple obj7;
+    //rotten obj8;
     QList<player*> optlist;
     player* curropt = nullptr;
 

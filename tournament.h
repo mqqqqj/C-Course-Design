@@ -6,6 +6,8 @@
 #include<battle.h>
 #include<QList>
 #include <QPainter>
+#include <synchapi.h>
+#include "rpttournament.h"
 namespace Ui {
 class tournament;
 }
@@ -25,14 +27,18 @@ public:
     detective det;
     copycat cat;
     grudger grd;
-    QList<player*>list;
 
+    QList<player*>list;
 
 private slots:
     void on_pushButton_clicked();
 
+
+    void on_getwinner_clicked();
+
 private:
     Ui::tournament *ui;
+    rpttournament*rpttour = new rpttournament;
 };
 
 #endif // TOURNAMENT_H

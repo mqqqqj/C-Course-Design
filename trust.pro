@@ -22,6 +22,7 @@ SOURCES += \
     onegame.cpp \
     player.cpp \
     repeatedgame.cpp \
+    rpttournament.cpp \
     showscore.cpp \
     tournament.cpp
 
@@ -31,6 +32,7 @@ HEADERS += \
     onegame.h \
     player.h \
     repeatedgame.h \
+    rpttournament.h \
     showscore.h \
     tournament.h
 
@@ -38,6 +40,7 @@ FORMS += \
     intro.ui \
     onegame.ui \
     repeatedgame.ui \
+    rpttournament.ui \
     showscore.ui \
     tournament.ui
 
