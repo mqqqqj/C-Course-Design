@@ -9,6 +9,9 @@
 #include <QStackedWidget>
 #include<QMessageBox>
 #include<QDebug>
+#include<QTime>
+#include<QHash>
+#include<QMap>
 namespace Ui {
 class rpttournament;
 }
@@ -21,8 +24,13 @@ public:
     explicit rpttournament(QWidget *parent = nullptr);
     ~rpttournament();
     void paintEvent(QPaintEvent*event);
+    void game();
+    void eliminate();
+    void reproduce();
+    void refresh(player*a);
+    void showresult();
     QList<player*>list;
-
+    static bool comp( player* a, player*b);
     //设置玩家数量
     int n_copycat = 3;
     int n_cheat = 3;
@@ -55,6 +63,14 @@ private slots:
     void on_done3_clicked();
 
     void on_startgame_clicked();
+
+    void on_end_clicked();
+
+    void on_game_clicked();
+
+    void on_elim_clicked();
+
+    void on_repro_clicked();
 
 private:
     Ui::rpttournament *ui;

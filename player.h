@@ -101,7 +101,12 @@ public:
 
 class detective:public player{
 public:
-    detective(){myact  = 1;evercheated = false;t_act = 0;};
+    detective(){
+        myact  = 1;
+        evercheated = false;
+        t_act = 0;
+        mylogic = new bool[3]{0,1,1};
+    };
     QString getname(){
         //qDebug()<<"detective";
         return "detective";
@@ -109,7 +114,7 @@ public:
     QString getchinesename(){
         return "福尔摩星";
     }
-    bool mylogic[3] ={0,1,1};
+    bool *mylogic;
     void act(bool opact){
         if(t_act<3){
             myact = mylogic[t_act];
@@ -158,7 +163,7 @@ public:
 
 class simple:public player{
 public:
-    simple(){myact  = 1;};
+    simple(){myact  = 1;mylastchoie =1;};
     QString getname(){
         return "simple";
     }
@@ -167,11 +172,17 @@ public:
     }
     void act(bool opact){
         if(opact){
+            qDebug()<<"对手合作，我选择："<<myact;
             myact = mylastchoie;
         }
         else{
-            myact = !mylastchoie;
+            if(mylastchoie){
+                qDebug()<<"对手欺骗，我选择："<<myact;
+                myact = 0;
+            }
+            else myact = 1;
         }
+        mylastchoie = myact;
         //qDebug()<<"opt act:"<<myact;
     }
 };

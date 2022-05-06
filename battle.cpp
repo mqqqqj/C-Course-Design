@@ -40,3 +40,4 @@ battle::battle(player*a,player*b){
     }
     qDebug()<<a->my_score<<"--"<<b->my_score;
 }
+

@@ -15,6 +15,14 @@ void tournament::refresh(player *a){
         a->evercheated = false;
         a->t_act = 0;
     }
+    else if(a->getname()=="simple"){
+        a->mylastchoie = 1;
+        a->myact = 1;
+    }
+    else if(a->getname()=="duck"){
+        a->myact = 1;
+        a->twocheat = 0;
+    }
 }
 
 tournament::tournament(QWidget *parent) :
