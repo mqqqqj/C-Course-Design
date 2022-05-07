@@ -2,7 +2,9 @@
 #define LASTPAGE_H
 
 #include <QMainWindow>
-
+#include<QPainter>
+#include <QCloseEvent>
+#include<QMessageBox>
 namespace Ui {
 class lastpage;
 }
@@ -14,6 +16,8 @@ class lastpage : public QMainWindow
 public:
     explicit lastpage(QWidget *parent = nullptr);
     ~lastpage();
+    void paintEvent(QPaintEvent *event);
+    void closeEvent( QCloseEvent * event);
 
 private:
     Ui::lastpage *ui;

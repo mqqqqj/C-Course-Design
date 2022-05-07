@@ -10,5 +10,6 @@
         <file>small.png</file>
         <file>background.png</file>
         <file>white.png</file>
+        <file>love.png</file>
     </qresource>
 </RCC>

@@ -12,6 +12,7 @@
 #include<QTime>
 #include<QHash>
 #include<QMap>
+#include"lastpage.h"
 namespace Ui {
 class rpttournament;
 }
@@ -42,7 +43,7 @@ public:
     int n_rotten = 4;
 
     //初始化参数
-    float mis_rate = 0.05;
+    float mis_rate = 0.0;
     int doublewin_reward = 2;
     int doublelose_reward = 0;
     int win_reward = 3;
@@ -72,9 +73,12 @@ private slots:
 
     void on_repro_clicked();
 
+    void on_tolastpage_clicked();
+
 private:
     Ui::rpttournament *ui;
     QStackedWidget *stackedWidget;
+    lastpage* lp = new lastpage;
 };
 
 #endif // RPTTOURNAMENT_H

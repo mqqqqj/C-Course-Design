@@ -7,6 +7,7 @@ rpttournament::rpttournament(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->startgame->hide();
+    ui->tolastpage->hide();
     ui->elim->hide();
     ui->repro->hide();
     ui->role->hide();
@@ -97,6 +98,7 @@ void rpttournament::on_pushButton_clicked()
     ui->nextpage->show();
     ui->showrole->show();
     ui->startgame->show();
+    ui->tolastpage->show();
 }
 
 void rpttournament::on_showrole_clicked()
@@ -216,12 +218,18 @@ void rpttournament::game(){//一局比赛，所有人两两对决round轮
                 */
                 int x = qrand()%100;
                 bool a_real_act,b_real_act;
-                if(x<=mis_rate*100){//犯错
+                if(x<mis_rate*100){//犯错
                     a_real_act = !a->getact();
-                    b_real_act = !b->getact();
+                    qDebug()<<"x = "<<x<<", misrate*100 = "<<mis_rate*100;
 
                 }else{//正常决策
                     a_real_act = a->getact();
+                }
+                int y = qrand()%100;
+                if(y<mis_rate*100){//犯错
+                    b_real_act = !b->getact();
+
+                }else{//正常决策
                     b_real_act = b->getact();
                 }
                 ahistory = b_real_act;
@@ -437,4 +445,10 @@ void rpttournament::on_repro_clicked()
     reproduce();
     ui->repro->hide();
     ui->game->show();
+}
+
+void rpttournament::on_tolastpage_clicked()
+{
+    lp->show();
+    this->hide();
 }

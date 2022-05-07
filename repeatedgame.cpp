@@ -187,7 +187,7 @@ void repeatedgame::on_summary_clicked()
    QFont font;
    font.setPointSize(20);//字体大小
    p->ui->myscore->setFont(font);
-   p->ui->myscore->setText("你最终的得分是："+QString::number(mytotal)+",理论的分数区间是[7,49]。");
+   p->ui->myscore->setText("你最终的得分是："+QString::number(mytotal)+",理论分数区间是[7,49]。");
    sc->show();
    this->hide();
 }
