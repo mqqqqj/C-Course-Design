@@ -81,6 +81,9 @@ void repeatedgame::on_coop_clicked()//我选择合作
     font.setPointSize(15);//字体大小
     ui->mycurr->setFont(font);
     ui->optcurr->setFont(font);
+    ui->optchoice->setFont(font);
+    ui->mytotalscore->setFont(font);
+    ui->mytotalscore->setStyleSheet("color:blue");
     //qDebug() << "curr round !"<<currround;
     my_act = 1;
     qDebug() << "我选择合作!";
@@ -132,6 +135,9 @@ void repeatedgame::on_cheat_clicked()
     font.setPointSize(15);//字体大小
     ui->mycurr->setFont(font);
     ui->optcurr->setFont(font);
+    ui->optchoice->setFont(font);
+    ui->mytotalscore->setFont(font);
+    ui->mytotalscore->setStyleSheet("color:blue");
     my_act = 0;
     qDebug() << "我选择欺骗!";
 

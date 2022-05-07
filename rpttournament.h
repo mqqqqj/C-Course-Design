@@ -36,7 +36,7 @@ public:
     int n_cheat = 3;
     int n_pink = 6;
     int n_grugder = 3;
-    int n_detective = 0;
+    //int n_detective = 0;
     int n_duck =3;
     int n_simple = 3;
     int n_rotten = 4;

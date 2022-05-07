@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     battle.cpp \
+    lastpage.cpp \
     main.cpp \
     intro.cpp \
     onegame.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     battle.h \
     intro.h \
+    lastpage.h \
     onegame.h \
     player.h \
     repeatedgame.h \
@@ -38,6 +40,7 @@ HEADERS += \
 
 FORMS += \
     intro.ui \
+    lastpage.ui \
     onegame.ui \
     repeatedgame.ui \
     rpttournament.ui \

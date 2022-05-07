@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include<tournament.h>
 #include<QPainter>
+#include <QStandardItemModel>
 namespace Ui {
 class showscore;
 }

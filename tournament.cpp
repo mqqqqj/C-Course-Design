@@ -56,8 +56,6 @@ void tournament::paintEvent(QPaintEvent *event){//直接用qtimer全部执行完
         QPalette palette;
         palette.setBrush(backgroundRole(), QBrush(pixmap));
         setPalette(palette);
-        //painter.drawEllipse(20,20,200,200);//画圆
-        //painter.drawRect(20,20,200,200);//画矩形
 }
 
 tournament::~tournament()
