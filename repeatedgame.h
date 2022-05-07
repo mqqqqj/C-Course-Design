@@ -39,9 +39,6 @@ public:
     pink obj3;
     grudger obj4;
     detective obj5;
-    //duck obj6;
-    //simple obj7;
-    //rotten obj8;
     QList<player*> optlist;
     player* curropt = nullptr;
 

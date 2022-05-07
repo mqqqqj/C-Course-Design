@@ -1,7 +1,7 @@
 #include "rpttournament.h"
 #include "ui_rpttournament.h"
 
-rpttournament::rpttournament(QWidget *parent) :
+rpttournament::rpttournament(QWidget *parent) ://构造函数
     QMainWindow(parent),
     ui(new Ui::rpttournament)
 {
@@ -54,11 +54,11 @@ rpttournament::~rpttournament()
     delete ui;
 }
 
-bool rpttournament::comp( player* a, player*b){
+bool rpttournament::comp( player* a, player*b){//自定义比较函数
     return a->my_score<b->my_score;
 }
 
-void rpttournament::refresh(player*a){
+void rpttournament::refresh(player*a){//刷新对象初始参数
     if(a->getname()=="copycat"){
         a->myact = 1;
     }
@@ -66,13 +66,6 @@ void rpttournament::refresh(player*a){
         a->evercheated = false;
         a->myact = 1;
     }
-    /*
-    else if(a->getname()=="detective"){
-        a->myact  = 1;
-        a->evercheated = false;
-        a->t_act = 0;
-    }
-    */
     else if(a->getname()=="simple"){
         a->mylastchoie = 1;
         a->myact = 1;
@@ -83,7 +76,7 @@ void rpttournament::refresh(player*a){
     }
 }
 
-void rpttournament::paintEvent(QPaintEvent*event){
+void rpttournament::paintEvent(QPaintEvent*event){//画背景
     QPixmap pixmap = QPixmap(":/image/white.png").scaled(this->size());
     QPalette palette;
     palette.setBrush(backgroundRole(), QBrush(pixmap));
@@ -101,12 +94,12 @@ void rpttournament::on_pushButton_clicked()
     ui->tolastpage->show();
 }
 
-void rpttournament::on_showrole_clicked()
+void rpttournament::on_showrole_clicked()//展示游戏规则
 {
     ui->role->show();
 }
 
-void rpttournament::on_nextpage_clicked()
+void rpttournament::on_nextpage_clicked()//stackedwidget翻页
 {
     int nIndex = ui->stackedWidget->currentIndex();
     nIndex++;
@@ -120,7 +113,6 @@ void rpttournament::on_pushButton_2_clicked()//设置玩家组成
     int b = ui->cheater->text().toInt();
     int c = ui->pink->text().toInt();
     int d = ui->duck->text().toInt();
-    //int e = ui->detect->text().toInt();
     int f = ui->grudger->text().toInt();
     int g = ui->simple->text().toInt();
     int h = ui->rotten->text().toInt();
@@ -132,7 +124,6 @@ void rpttournament::on_pushButton_2_clicked()//设置玩家组成
         n_cheat = b;
         n_pink = c;
         n_duck = d;
-        //n_detective = e;
         n_grugder = f;
         n_simple = g;
         n_rotten = h;
@@ -168,7 +159,6 @@ void rpttournament::on_startgame_clicked()//按下开始游戏按钮，groupbox�
 {
     pink *pk = new pink[n_pink];
     cheater *cht = new cheater[n_cheat];
-    //detective *det = new detective[n_detective];
     copycat *cat = new copycat[n_copycat];
     grudger *grd = new grudger[n_grugder];
     duck *dk = new duck[n_duck];
@@ -179,7 +169,6 @@ void rpttournament::on_startgame_clicked()//按下开始游戏按钮，groupbox�
     for(int i = 0;i < 7;i ++){
         for(int j = 0;j < num[i];j ++){
             list.append(&pl[i][j]);
-            //qDebug()<<pl[i][j].getname();
         }
     }
     ui->groupBox->show();
@@ -192,11 +181,9 @@ void rpttournament::on_startgame_clicked()//按下开始游戏按钮，groupbox�
 void rpttournament::game(){//一局比赛，所有人两两对决round轮
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
     int k ,j;
-    qDebug()<<"开始对局，列表长度："<<list.length();
+    //qDebug()<<"开始对局，列表长度："<<list.length();
     for(k = 0;k < 24;k ++){//前24个（0~23）玩家都可能是玩家a
-        qDebug()<<"当前a玩家编号："<<k;
         for(j = k + 1;j < 25;j ++){//玩家b
-            qDebug()<<"当前b玩家编号："<<j;
             player *a = list[k];
             player *b = list[j];
             qDebug()<<"获取双方姓名："<<a->getname()<<" vs "<<b->getname();
@@ -206,22 +193,10 @@ void rpttournament::game(){//一局比赛，所有人两两对决round轮
                     a->act(ahistory);
                     b->act(bhistory);
                 }
-                /*
-                if(a->getname()=="detective"){
-                    if(b->getact()==false)
-                        a->evercheated = true;
-                }
-                if(b->getname()=="detective"){
-                    if(a->getact()==false)
-                        b->evercheated = true;
-                }
-                */
                 int x = qrand()%100;
                 bool a_real_act,b_real_act;
                 if(x<mis_rate*100){//犯错
                     a_real_act = !a->getact();
-                    qDebug()<<"x = "<<x<<", misrate*100 = "<<mis_rate*100;
-
                 }else{//正常决策
                     a_real_act = a->getact();
                 }
@@ -269,7 +244,7 @@ void rpttournament::game(){//一局比赛，所有人两两对决round轮
     qDebug()<<"显示完成";
 }
 
-void rpttournament::showresult(){
+void rpttournament::showresult(){//展示结果
     QFont font;
     font.setPointSize(12);//字体大小
 
@@ -288,7 +263,7 @@ void rpttournament::showresult(){
     qDebug()<<"显示完成，列表长度："<<list.length();
 }
 
-void rpttournament::eliminate(){
+void rpttournament::eliminate(){//淘汰函数
 
     for(int i = 0;i < n_eliminate;i ++){
         list.removeAt(0);
@@ -299,7 +274,7 @@ void rpttournament::eliminate(){
     showresult();
 }
 
-void rpttournament::reproduce(){
+void rpttournament::reproduce(){//繁殖函数
     QString winners[n_eliminate];
     QHash<QString,int> hashtable;
     for(int i =0;i < n_eliminate;i ++){
@@ -328,14 +303,6 @@ void rpttournament::reproduce(){
                 list.append(&obj[i]);
             }
         }
-        /*
-        else if(it.key()=="detective"){
-            detective *obj=new detective[it.value()];
-            for(int i = 0;i < it.value();i ++){
-                list.append(&obj[i]);
-            }
-        }
-        */
         else if(it.key()=="grudger"){
             grudger *obj=new grudger[it.value()];
             for(int i = 0;i < it.value();i ++){
@@ -362,59 +329,6 @@ void rpttournament::reproduce(){
         }
     }
     showresult();
-
-    /*
-    QString winnername = list[24-n_eliminate]->getname();
-    if(winnername=="copycat"){
-        copycat *obj=new copycat[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="pink"){
-        pink *obj=new pink[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="duck"){
-        duck *obj=new duck[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="detective"){
-        detective *obj=new detective[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="grudger"){
-        grudger *obj=new grudger[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="cheater"){
-        cheater *obj=new cheater[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="simple"){
-        simple *obj=new simple[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    else if(winnername=="rotten"){
-        rotten *obj=new rotten[n_eliminate];
-        for(int i = 0;i < n_eliminate;i ++){
-            list.append(&obj[i]);
-        }
-    }
-    showresult();
-    */
 }
 
 void rpttournament::on_end_clicked()

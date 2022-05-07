@@ -81,3 +81,4 @@ void onegame::on_pushButton_3_clicked()
     repg->show();
     this->hide();
 }
+

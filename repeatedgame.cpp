@@ -102,7 +102,7 @@ void repeatedgame::on_coop_clicked()//我选择合作
     ui->optcurr->setText(QString::number(curropt->my_score));
     ui->mytotalscore->setText(QString::number(mytotal));
     if(currround==round){
-        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        //qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
         round = qrand()%5+3;
         //qDebug() << "change total round !"<<round;
         currround = 0;
@@ -157,7 +157,7 @@ void repeatedgame::on_cheat_clicked()
     ui->optcurr->setText(QString::number(curropt->my_score));
     ui->mytotalscore->setText(QString::number(mytotal));
     if(currround==round){
-        qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+        //qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
         round = qrand()%5+3;
         //qDebug() << "change total round !"<<round;
         currround = 0;

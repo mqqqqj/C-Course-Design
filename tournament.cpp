@@ -42,16 +42,11 @@ tournament::tournament(QWidget *parent) :
 void tournament::paintEvent(QPaintEvent *event){//直接用qtimer全部执行完
     QPainter painter(this);
         painter.setPen(QPen(Qt::yellow,4));//设置画笔形式
-        //QFont font2("楷体",10);
-        //painter.drawText(390,100,"复读机,得分："+QString::number(cat.my_score));
-        //painter.drawText(390,100,"复读机");
-        //painter.drawText(220,300,QString::number(cat.my_score));
         painter.drawLine(400,100,200,230);//画直线
         painter.drawLine(200,230,270,450);
         painter.drawLine(270,450,530,450);
         painter.drawLine(530,450,600,230);
         painter.drawLine(600,230,400,100);
-
         QPixmap pixmap = QPixmap(":/image/background.png").scaled(this->size());//画背景
         QPalette palette;
         palette.setBrush(backgroundRole(), QBrush(pixmap));

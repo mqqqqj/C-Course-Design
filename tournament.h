@@ -27,13 +27,10 @@ public:
     detective det;
     copycat cat;
     grudger grd;
-
     QList<player*>list;
 
 private slots:
     void on_pushButton_clicked();
-
-
     void on_getwinner_clicked();
 
 private:

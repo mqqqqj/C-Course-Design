@@ -4,8 +4,6 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QTimer>
-#include<QKeyEvent>
-#include<vector>
 #include<QString>
 #include <repeatedgame.h>
 namespace Ui {
@@ -21,7 +19,6 @@ public:
     ~onegame();
     bool isopcheat = true;
     void paintEvent(QPaintEvent *event);
-
 private slots:
     void on_pushButton_2_clicked();
 
